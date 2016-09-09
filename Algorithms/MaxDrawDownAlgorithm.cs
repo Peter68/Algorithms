@@ -8,25 +8,22 @@ namespace Algorithms
 {
     public class MaxDrawDownAlgorithm
     {
-        public static int Solve(List<int> lista)
+        public int Solve(List<int> data)
         {
-            int spadek = 0;
-            for (int i = 0; i < lista.Count; i++)
+            int maxDrawDown = 0;
+            int max = 0;
+            for (int i = 0; i < data.Count; i++)
             {
-                for (int j = i + 1; j < lista.Count; j++)
+                if (data[i] > max)
                 {
-                    if (lista[i] > lista[j])
-                    {
-
-                        if ((lista[i] - lista[j]) > spadek)
-                        {
-                            spadek = lista[i] - lista[j];
-                        }
-                    }
+                    max = data[i];
                 }
-
+                if (max - data[i] > maxDrawDown)
+                {
+                    maxDrawDown = max - data[i];
+                }
             }
-            return spadek;
+            return maxDrawDown;
         }
     }
 }
